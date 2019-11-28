@@ -1,8 +1,13 @@
-package com.example.easynotes.exception;
+package com.example.easynotes.model;
 
-public class ExpenseCategoryDto {
-	  private int ec_id;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class ExpenseCategoryModel {
+		
+		private int ec_id;
 	    private String ec_name;
+	    
 		public int getEc_id() {
 			return ec_id;
 		}
@@ -15,5 +20,4 @@ public class ExpenseCategoryDto {
 		public void setEc_name(String ec_name) {
 			this.ec_name = ec_name;
 		}
-	 
 }
