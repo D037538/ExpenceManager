@@ -10,34 +10,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.easynotes.model.ExpenseCategory;
+import com.example.easynotes.model.ExpenseCategoryModel;
 import com.example.easynotes.model.Expenses;
 import com.example.easynotes.repository.ExpenceCategoryRepository;
 import com.example.easynotes.repository.ExpensesRepository;
 import com.example.easynotes.service.ExpenseCategoryService;
 
-
 @RestController
 @RequestMapping("/api")
 public class ExpenseCategotyController {
-	 @Autowired
-	 ExpenceCategoryRepository expenceCategoryRepository;
-	 
-	 @Autowired
-	 ExpenseCategoryService expenseCategoryService;
+	@Autowired
+	ExpenceCategoryRepository expenceCategoryRepository;
+
+	@Autowired
+	ExpenseCategoryService expenseCategoryService;
+
 	
+	  @PostMapping("/addCategory") 
+	  public ExpenseCategory createExpensesCategories(@RequestBody ExpenseCategoryModel
+	  expenseCategoryDto) {
+	  System.out.println("Expense name"+expenseCategoryDto.getEc_name()); 
+	  return  expenseCategoryService.save(expenseCategoryDto); }
+	 
 	
 	/*
 	 * @PostMapping("/addCategory") public ExpenseCategory
 	 * createExpensesCategories(@RequestBody ExpenseCategory expenseCategory) {
-	 * return expenseCategoryService.save(); }
+	 * return expenceCategoryRepository.save(expenseCategory); }
 	 */
-	
-	  @PostMapping("/addCategory")
-	  public ExpenseCategory createExpensesCategories(@RequestBody ExpenseCategory expenseCategory) {
-	  return expenceCategoryRepository.save(expenseCategory);
-	  }
-	  
-	  @GetMapping("/categories") public List<ExpenseCategory>
-	  getAllExpensesCategory() { return expenceCategoryRepository.findAll(); }
-	 
+		 
+
+	@GetMapping("/categories")
+	public List<ExpenseCategory> getAllExpensesCategory() {
+		return expenseCategoryService.getAllExpensesCategory();
+	}
+
 }

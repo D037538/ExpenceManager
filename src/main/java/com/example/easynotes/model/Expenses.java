@@ -29,6 +29,7 @@ public class Expenses {
 	 
 	    @UpdateTimestamp
 	    private LocalDateTime updateDateTime;
+	    
 	    @ManyToOne
 	    @JoinColumn(name="ec_id")
 	    private ExpenseCategory expenseCategory;
